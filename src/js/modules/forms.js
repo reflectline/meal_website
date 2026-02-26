@@ -9,7 +9,7 @@ function forms(formSelector, timer) {
     const forms = document.querySelectorAll(formSelector);
 
     const massage = {
-        loading: '../src/icons/spinner.svg',
+        loading: 'icons/spinner.svg',
         success: 'Спасибо! Скоро мы с вами свяжемся',
         failure: 'Что-то пошло не так!'
     }
