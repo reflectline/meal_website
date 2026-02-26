@@ -9,7 +9,7 @@ function forms(formSelector, timer) {
     const forms = document.querySelectorAll(formSelector);
 
     const massage = {
-        loading: 'src/icons/spinner.svg',
+        loading: '../src/icons/spinner.svg',
         success: 'Спасибо! Скоро мы с вами свяжемся',
         failure: 'Что-то пошло не так!'
     }
@@ -19,14 +19,8 @@ function forms(formSelector, timer) {
     })
 
 
-    const postData = async (url, data) => {
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: {'Content-type': 'application/json'},
-            body: data
-        })
-
-        return await res.json()
+    const postData = async (data) => {
+         return Promise.resolve(data);
     }
 
     function bindPostData(form){
@@ -42,9 +36,9 @@ function forms(formSelector, timer) {
             const json = JSON.stringify(Object.fromEntries(formData.entries()))
 
 
-            postData('http://localhost:3000/requests', json)
+            postData(json)
                 .then(data => {
-                    console.log(data);
+                    console.log(`Your contacts: ${data}`);
                     showThanksModal(massage.success)
                     statusMassage.remove()
                 }).catch(() => {
